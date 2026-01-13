@@ -1,0 +1,137 @@
+/* ================= PAGE BASE ================= */
+
+.about-page {
+  background: radial-gradient(circle at right, #1a1a1a, #000000 55%);
+  color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+
+.about-hero {
+  padding: 120px 20px 90px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.about-hero h1 span {
+  color: #caa24d;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  color: #d0d0d0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ================= SECTIONS ================= */
+
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 90px 8%;
+}
+
+/* reverse layout for alternating sections */
+.about-section.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ================= IMAGE ================= */
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65);
+}
+
+/* ================= TEXT ================= */
+
+.about-text {
+  flex: 1;
+  max-width: 560px;
+}
+
+.about-text h2 {
+  font-size: 2.1rem;
+  margin-bottom: 18px;
+  color: #ffc107;
+}
+
+.about-text p {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  margin-bottom: 18px;
+  color: #e2e2e2;
+}
+
+.about-text ul {
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+
+.about-text ul li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #dddddd;
+}
+
+/* ================= FINAL STATEMENT ================= */
+
+.about-final {
+  padding: 110px 20px;
+  text-align: center;
+  font-size: 1.45rem;
+  font-style: italic;
+  color: #d6d6d6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .about-section,
+  .about-section.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-image img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-section {
+    padding: 70px 6%;
+  }
+}

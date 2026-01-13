@@ -1,0 +1,89 @@
+.highlights {
+  padding: 100px 5%;
+  background: radial-gradient(circle at right, #1a1a1a, #000000 60%);
+  color: #ffffff;
+}
+
+.highlights-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.highlights-header h2 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.highlights-header p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  color: #d1d5db;
+  font-size: 16px;
+}
+
+/* Grid */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Card */
+.highlight-card {
+  position: relative;
+  height: 320px; /* medium poster size */
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(12%);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.highlight-card:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0%);
+}
+
+/* Overlay */
+.highlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.15)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
+}
+
+.highlight-overlay h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.highlight-overlay span {
+  font-size: 14px;
+  color: #ffc107;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .highlights-header h2 {
+    font-size: 32px;
+  }
+
+  .highlight-card {
+    height: 260px;
+  }
+}

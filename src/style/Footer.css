@@ -1,0 +1,126 @@
+/* ================= FOOTER ================= */
+
+.footer {
+  background: radial-gradient(circle at right, #1a1a1a, #000000 55%);
+  color: #dcdcdc;
+  padding: 60px 40px 25px;
+  font-family: inherit;
+}
+
+/* TOP GRID */
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* COLUMNS */
+.footer-col h4 {
+  margin-bottom: 14px;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #dcdcdc;
+  transition: color 0.25s ease;
+}
+
+.footer-col a:hover {
+  color: #ffc107;
+}
+
+/* BRAND */
+.footer-col.brand h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.footer-col.brand h2 span {
+  color: #ffc107;
+}
+
+.footer-col.brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #bcbcbc;
+}
+
+/* CONTACT TEXT */
+.footer-col p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* DIVIDER */
+.footer-divider {
+  margin: 40px 0 25px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 193, 7, 0.6),
+    transparent
+  );
+}
+
+/* BOTTOM */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  color: #aaaaaa;
+  transition: color 0.25s ease;
+}
+
+.footer-socials a:hover {
+  color: #ffc107;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 40px 20px 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

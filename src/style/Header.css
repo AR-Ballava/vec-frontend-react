@@ -1,0 +1,133 @@
+/* ================= HEADER ================= */
+
+/* REMOVE all browser default link focus/hover styles that create underline even after doing text decoration non */
+.header a,
+.header a:hover {
+  text-decoration: none;
+}
+
+.header {
+  height: 70px;
+  padding: 0 30px;
+  background: radial-gradient(circle at right, #1a1a1a, #000000 50%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.logo {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  color: white;
+  grid-column: 1;
+}
+
+.logo span {
+  color: #ffc107;
+}
+
+.logo span:hover{
+  color: white;
+}
+
+.logo a:hover {
+  color: #ffc107;
+}
+
+/* ================= NAV ================= */
+
+.nav {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #dcdcdc;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #dcdcdc;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #ffc107;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login {
+  background: #ffc107;
+  color: #003344;
+}
+
+.logout {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #ffc107;
+}
+
+
+/* ================= MOBILE ================= */
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  color: white;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  background: #000000;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .search-wrapper input {
+    display: none;
+  }
+
+  .search-wrapper {
+    width: auto;
+  }
+}
+

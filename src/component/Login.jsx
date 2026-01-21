@@ -33,44 +33,45 @@ export default function Login() {
     }
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const res = await fetch("http://localhost:8080/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,      // ✅ correct
-        password: password
-      })
-    });
+    try {
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
 
-    if (!res.ok) {
-      const text = await res.text();
-      alert(text || "Invalid credentials");
-      return;
+      if (!res.ok) {
+        const text = await res.text();
+        alert(text || "Invalid credentials");
+        return;
+      }
+
+      const data = await res.json();
+
+      // ✅ SAVE AUTH DATA
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("fullName", data.fullName);
+
+      // 🔥 IMPORTANT: notify Header immediately
+      window.dispatchEvent(new Event("auth-change"));
+
+      navigate("/profile");
+
+    } catch (err) {
+      console.error("Login error:", err);
+      alert(err.message || "Client-side error");
     }
-
-    const data = await res.json(); // ✅ now JSON
-
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("role", data.role);
-    localStorage.setItem("userId", data.userId);
-    localStorage.setItem("fullName", data.fullName);
-
-    // const { login } = useAuth();
-
-    // login(data.token);
-    navigate("/profile");
-
-  } catch (err) {
-    alert("Server error");
-  }
-};
-
+  };
 
   return (
     <div className="app-bg">

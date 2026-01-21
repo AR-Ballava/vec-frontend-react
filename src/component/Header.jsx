@@ -12,22 +12,38 @@ const Header = () => {
   );
 
   useEffect(() => {
-    const handleStorageChange = () => {
+    const syncAuth = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
     };
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    // initial check
+    syncAuth();
+
+    // other tabs
+    window.addEventListener("storage", syncAuth);
+
+    // same tab (custom event)
+    window.addEventListener("auth-change", syncAuth);
+
+    return () => {
+      window.removeEventListener("storage", syncAuth);
+      window.removeEventListener("auth-change", syncAuth);
+    };
   }, []);
 
   const toggleAuth = () => {
     if (isLoggedIn) {
       // LOGOUT
       localStorage.removeItem("token");
-      setIsLoggedIn(false);
+      localStorage.removeItem("role");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("fullName");
+
+      // 🔥 notify header
+      window.dispatchEvent(new Event("auth-change"));
+
       navigate("/");
     } else {
-      // LOGIN
       navigate("/login");
     }
 

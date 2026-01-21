@@ -11,6 +11,8 @@ import HighlightsPage from './pages/HighlightsPage'
 import ProductDetails from './component/ProductDetails'
 import ProductDetaisPage from './pages/ProductDetaisPage'
 import Header from './component/Header'
+import Users from './component/Users'
+
 
 
 
@@ -20,6 +22,7 @@ import Header from './component/Header'
 function App() {
   return (
     <>
+{/* <Users/> */}
       <Router>
         <Header/>
         <Routes>

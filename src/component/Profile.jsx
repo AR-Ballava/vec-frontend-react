@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../style/Profile.css";
 
 /* ================= LOGIC ================= */
@@ -11,31 +12,72 @@ const getAccessLevel = (netWorth) => {
   return "Global Elite";
 };
 
+/* ================= AVATAR HELPERS ================= */
+
+const premiumGradients = [
+  "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+  "linear-gradient(135deg, #141e30, #243b55)",
+  "linear-gradient(135deg, #232526, #414345)",
+  "linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)",
+  "linear-gradient(135deg, #4b4e4d, #131314)"
+];
+
+const getInitials = (name) => {
+  if (!name) return "U";
+  const parts = name.trim().split(" ");
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+  return (parts[0][0] + parts[1][0]).toUpperCase();
+};
+
+const getPremiumGradient = (name) => {
+  if (!name) return premiumGradients[0];
+  const index = name.charCodeAt(0) % premiumGradients.length;
+  return premiumGradients[index];
+};
+
 /* ================= COMPONENT ================= */
 
 const Profile = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-useEffect(() => {
-  const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
 
-  if (!token || !userId) return;
+    // 🔐 No token → force login
+    if (!token || !userId) {
+      navigate("/login");
+      return;
+    }
 
-  fetch(`http://localhost:8082/api/user/getUser/${userId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error("Unauthorized");
-      return res.json();
+    fetch(`http://localhost:8080/api/user/getUser/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
     })
-    .then((data) => setUser(data))
-    .catch((err) => console.error(err));
-}, []);
+      .then((res) => {
+        // 🔥 JWT expired or invalid
+        if (res.status === 401) {
+          localStorage.clear();
 
+          // notify Header immediately
+          window.dispatchEvent(new Event("auth-change"));
+
+          navigate("/login");
+          throw new Error("Session expired");
+        }
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch user");
+        }
+
+        return res.json();
+      })
+      .then((data) => setUser(data))
+      .catch((err) => console.error(err));
+  }, [navigate]);
 
   if (!user) return null;
 
@@ -44,11 +86,13 @@ useEffect(() => {
       <div className="profile-card">
         {/* LEFT — USER INFO */}
         <div className="profile-left">
-          <img
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
-            alt="User Avatar"
-            className="profile-avatar"
-          />
+          {/* AUTO GENERATED PROFILE AVATAR */}
+          <div
+            className="profile-avatar auto-avatar"
+            style={{ background: getPremiumGradient(user.fullName) }}
+          >
+            {getInitials(user.fullName)}
+          </div>
 
           <h2 className="profile-name">{user.fullName}</h2>
           <p className="profile-tier">Prestige Member · Black Tier</p>

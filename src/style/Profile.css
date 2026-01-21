@@ -142,3 +142,19 @@
   opacity: 0.5;
   font-size: 12px;
 }
+/* ================= AUTO AVATAR ================= */
+
+.auto-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 55px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-family:'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+

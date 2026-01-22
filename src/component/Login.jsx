@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import "../style/Login.css";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 
 export default function Login() {
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = location.state?.from || "/profile";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -65,7 +69,7 @@ export default function Login() {
       // 🔥 IMPORTANT: notify Header immediately
       window.dispatchEvent(new Event("auth-change"));
 
-      navigate("/profile");
+      navigate(redirectTo);
 
     } catch (err) {
       console.error("Login error:", err);

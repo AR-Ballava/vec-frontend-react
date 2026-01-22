@@ -12,9 +12,8 @@ import ProductDetails from './component/ProductDetails'
 import ProductDetaisPage from './pages/ProductDetaisPage'
 import Header from './component/Header'
 import Users from './component/Users'
-
-
-
+import ProtectedRoute from './component/ProtectedRoute'
+import MyOrders from './component/MyProducts'
 
 
 
@@ -32,7 +31,15 @@ function App() {
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/register" element={<RegisterPage/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="/profile" element={<ProfilePaage/>} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePaage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/my-orders" element={<MyOrders/>} />
           <Route path="/product/:id" element={<ProductDetaisPage />} />
         </Routes>
       </Router>

@@ -9,15 +9,17 @@ export const authFetch = async (url, options = {}) => {
     }
   });
 
-  // 🔥 JWT expired or invalid
   if (res.status === 401) {
     localStorage.clear();
-
-    // notify Header
     window.dispatchEvent(new Event("auth-change"));
 
-    // redirect to login
-    window.location.href = "/login";
+    // 🔥 DO NOT hard reload
+    window.dispatchEvent(
+      new CustomEvent("force-login", {
+        detail: { reason: "expired" }
+      })
+    );
+
     throw new Error("Session expired. Please login again.");
   }
 

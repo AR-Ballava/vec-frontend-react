@@ -1,0 +1,192 @@
+/* ================= PAGE ================= */
+
+.orders-page {
+  padding: 40px 6%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #e5e7eb;
+}
+
+.orders-page h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ================= LOADING ================= */
+
+.loading-text {
+  text-align: center;
+  margin-top: 120px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ================= EMPTY STATE ================= */
+
+.empty-orders {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.empty-orders h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.empty-orders p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.empty-orders button {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  border: none;
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #020617;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.empty-orders button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+}
+
+/* ================= GRID ================= */
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ================= CARD ================= */
+
+.order-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= IMAGE ================= */
+
+.order-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #020617;
+}
+
+/* ================= INFO ================= */
+
+.order-info {
+  padding: 16px 18px 20px;
+}
+
+.order-info h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.order-info .category {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 10px;
+}
+
+/* ================= META ================= */
+
+.order-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.order-meta .price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* ================= STATUS ================= */
+
+.status {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.status.completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.status.paid {
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+}
+
+.status.pending {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+}
+
+.status.failed {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* ================= DATE ================= */
+
+.date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+}
+
+/* ================= BUTTON ================= */
+
+.view-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #e5e7eb;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.view-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+  .orders-page {
+    padding: 30px 5%;
+  }
+
+  .orders-page h1 {
+    font-size: 22px;
+  }
+}

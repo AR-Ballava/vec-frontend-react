@@ -25,7 +25,7 @@ const Hero = () => {
 
 
         <div className="hero-actions">
-          <button onClick={()=> navigate("/products")} className="primary-btn collection">Explore Collection</button>
+          <button onClick={()=> navigate("/collections")} className="primary-btn collection">Explore Collection</button>
           <button onClick={()=> navigate("/highlights")} className="secondary-btn highlight">View Highlights</button>
         </div>
       </div>

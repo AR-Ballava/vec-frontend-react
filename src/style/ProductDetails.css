@@ -105,6 +105,10 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.btn-buy:active{
+  transform: scale(1.1);
 }
 
 /* QUOTE PANEL */

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../style/ProductDetails.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // ✅ ADDED
 
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [quote, setQuote] = useState("");
   const [quoteAuthor, setQuoteAuthor] = useState("");
   const [loading, setLoading] = useState(true);
+  const [buyLoading, setBuyLoading] = useState(false);
 
   /* ---------- FETCH PRODUCT ---------- */
   useEffect(() => {
@@ -23,7 +25,7 @@ const ProductDetails = () => {
       .catch(() => setLoading(false));
   }, [id]);
 
-  /* ---------- FETCH QUOTE (API NINJAS) ---------- */
+  /* ---------- FETCH QUOTE ---------- */
   useEffect(() => {
     fetch("https://api.api-ninjas.com/v2/randomquotes?categories=success,wisdom", {
       headers: {
@@ -47,6 +49,69 @@ const ProductDetails = () => {
 
   if (loading) return <h3 className="loading-text">Loading...</h3>;
   if (!product) return <h3>Product not found</h3>;
+
+  /* ---------- PAYMENT HANDLER ---------- */
+const handleBuyNow = async () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    navigate("/login", { state: { from: `/product/${id}` } });
+    return;
+  }
+
+  try {
+    setBuyLoading(true);
+
+    // ✅ CALL ORDER SERVICE
+    const res = await fetch("http://localhost:8080/api/order/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        productId: product.productId,
+        price: product.price
+      })
+    });
+
+    const data = await res.text();
+
+    // data comes from Order Service
+    const options = {
+      key: "rzp_test_S6cjlxaBnuRETO",
+      amount: data.amount * 100,
+      currency: "INR",
+      name: "IMRICH",
+      description: product.name,
+      order_id: data.razorpayOrderId,
+
+      handler: function () {
+        alert("Payment initiated successfully 🎉");
+      },
+
+      modal: {
+        ondismiss: function () {
+          setBuyLoading(false);
+        }
+      },
+
+      theme: {
+        color: "#0f172a"
+      }
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong");
+  } finally {
+    setBuyLoading(false);
+  }
+};
+
 
   /* ---------- VIRTUAL WORTH ---------- */
   const virtualWorthUSD = (product.price * 0.237).toFixed(2);
@@ -117,9 +182,15 @@ It is designed for individuals who operate beyond limits.`;
         <div className="divider"></div>
 
         <div className="action-buttons">
-          <button className="btn-buy">Buy Now</button>
+          <button
+            className="btn-buy"
+            onClick={handleBuyNow}
+            disabled={buyLoading}
+          >
+            {buyLoading ? "Processing..." : "Buy Now"}
+          </button>
         </div>
-        
+
         <h4>Description</h4>
         <p className="description-text">
           {generateDescription(product.name)}

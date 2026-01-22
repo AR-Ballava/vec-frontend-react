@@ -45,11 +45,14 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
 
-    // 🔐 No token → force login
-    if (!token || !userId) {
-      navigate("/login");
-      return;
-    }
+    // // 🔐 No token → force login
+    // if (!token || !userId) {
+    //   navigate("/login", {
+    //     state: { from: "/profile" }
+    //   });
+    //   return;
+    // }
+
 
     fetch(`http://localhost:8080/api/user/getUser/${userId}`, {
       headers: {
@@ -140,7 +143,7 @@ const Profile = () => {
         <div className="profile-right">
           <div className="collections-header">
             <h3>Your Featured Collections</h3>
-            <button className="outline-btn">View All Collections</button>
+            <button onClick={() => navigate("/my-orders")} className="outline-btn">View All Collections</button>
           </div>
 
           <p className="collections-subtitle">

@@ -55,7 +55,7 @@ const Footer = () => {
       {/* BOTTOM SECTION */}
       <div className="footer-bottom">
         <p>
-          © {new Date().getFullYear()} IMRICH STORE. All rights reserved.
+          © {new Date().getFullYear()} IMRICH STORE. All rights reserved AR-Ballava.
         </p>
 
         <div className="footer-socials">

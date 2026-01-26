@@ -32,22 +32,28 @@ const Hero = () => {
 
       {/* Image Grid */}
       <div className="hero-gallery" >
+        <button style={{backgroundColor: "transparent", border: "none"}} onClick={()=> navigate("/collections")}>
         <img
-          src="https://images.unsplash.com/photo-1612825173281-9a193378527e?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/images/car01.avif"
           alt="Premium Car"
-        />
+        /></button>
+        <button style={{backgroundColor: "transparent", border: "none"}} onClick={()=> navigate("/collections")}>
         <img
-          src="https://images.unsplash.com/photo-1723444413887-998a2cfa508a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/images/yatch02.avif"
           alt="Luxury Car"
-        />
+        /></button>
+        <button style={{backgroundColor: "transparent", border: "none"}} onClick={()=> navigate("/collections")}>
         <img
-          src="https://images.unsplash.com/photo-1615812595024-43ac7a9c0586?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/images/bike03.avif"
           alt="Superbike"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1580654712603-eb43273aff33?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        /></button>
+        <button style={{backgroundColor: "transparent", border: "none"}} onClick={()=> navigate("/collections")}>
+         <img
+          src="/images/car04.avif"
           alt="Premium Bike"
-        />
+        /></button>
+
+
       </div>
     </section>
   );

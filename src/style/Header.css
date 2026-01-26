@@ -88,7 +88,8 @@
   display: none;
   background: transparent;
   color: white;
-  font-size: 26px;
+  font-size: clamp(18px, 3vw, 26px);
+  margin-left: 54vw;
   border: none;
   cursor: pointer;
 }

@@ -81,9 +81,6 @@ const Header = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="mobile-menu">
-          <Link to="/products" onClick={() => setMenuOpen(false)}>
-            Product
-          </Link>
           <Link to="/profile" onClick={() => setMenuOpen(false)}>
             Profile
           </Link>

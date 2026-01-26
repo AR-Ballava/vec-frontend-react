@@ -18,7 +18,7 @@ const About = () => {
       <section className="about-section">
         <div className="about-image">
           <img
-            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+            src="/images/car09.avif"
             alt="Luxury Car"
           />
         </div>
@@ -39,7 +39,7 @@ const About = () => {
       <section className="about-section reverse">
         <div className="about-image">
           <img
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+            src="/images/road10.avif"
             alt="Private Jet"
           />
         </div>
@@ -61,7 +61,7 @@ const About = () => {
       <section className="about-section">
         <div className="about-image">
           <img
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+            src="/images/beech11.avif"
             alt="Luxury Yacht"
           />
         </div>
@@ -82,7 +82,7 @@ const About = () => {
       <section className="about-section reverse">
         <div className="about-image">
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            src="/images/people12.avif"
             alt="Luxury Lifestyle"
           />
         </div>
